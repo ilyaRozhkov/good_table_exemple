@@ -1,0 +1,119 @@
+* { box-sizing: border-box; }
+body { margin: 0; font-family: sans-serif; background: #f0f2f5; }
+.app { padding: 20px; }
+h1 { font-size: 22px; margin: 0 0 4px; }
+.subtitle { margin: 0 0 16px; color: #57606a; font-size: 13px; }
+
+/* --- Метрики --- */
+.stats {
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+  font-size: 13px;
+  color: #57606a;
+  background: #fff;
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #d0d7de;
+}
+.stats b { color: #1f2328; }
+.stats b.bad { color: #cf222e; }
+.stats b.good { color: #1a7f37; }
+
+/* --- Контейнер виртуализированной таблицы --- */
+.table-container {
+  border: 1px solid #d0d7de;
+  border-radius: 8px;
+  background: #fff;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+/* --- Обертка шапки --- */
+.header-wrapper {
+  overflow: hidden;
+  position: relative;
+  z-index: 2;
+  background: #f6f8fa;
+  border-bottom: 1px solid #cfd8e3;
+  flex-shrink: 0;
+}
+
+/* --- Заголовок колонки (div вместо th) --- */
+.header-wrapper .col-header {
+  flex: 0 0 auto;
+  height: 64px;
+  display: block;
+  position: relative;
+  border-right: 1px solid #eaeef2;
+  background: #f6f8fa;
+}
+
+/* --- Тело заголовка --- */
+.th-body {
+  padding: 6px 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  height: 100%;
+}
+
+.th-title {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-weight: 600;
+  font-size: 13px;
+  cursor: pointer;
+  user-select: none;
+  overflow: hidden;
+}
+
+.th-title .th-label {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.sort-ind { font-size: 10px; color: #1f6feb; flex: 0 0 auto; }
+
+/* --- Инпут поиска --- */
+.th-filter {
+  width: 100%;
+  min-width: 0;
+  font-size: 12px;
+  padding: 2px 6px;
+  border: 1px solid #d0d7de;
+  border-radius: 4px;
+  background: #fff;
+}
+.th-filter:focus { outline: 2px solid #1f6feb; outline-offset: -1px; }
+
+/* --- Ручка ресайза (исправлена) --- */
+.resizer {
+  position: absolute;
+  top: 0;
+  right: 0; /* ✅ ИСПРАВЛЕНО: было -3px, теперь ручка внутри границ */
+  width: 8px; /* Сделали чуть шире для удобства */
+  height: 100%;
+  cursor: col-resize;
+  z-index: 10;
+  touch-action: none;
+}
+.resizer:hover { background: rgba(31, 111, 235, 0.3); }
+
+/* --- Ячейка виртуализированного грида --- */
+.grid-cell {
+  padding: 4px 8px;
+  border-bottom: 1px solid #eaeef2;
+  border-right: 1px solid #eaeef2;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+}
